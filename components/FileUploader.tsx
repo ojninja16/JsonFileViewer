@@ -45,7 +45,7 @@ function FileUploader() {
     <div className="w-full h-full flex justify-center items-center">
       <Card className="p-4 w-screen  h-full">
         <div className="h-full flex flex-col justify-center items-center space-y-4">
-          <Title level={6}>JSON Analyzer</Title>
+          <Title level={1}>JSON Analyzer</Title>
           <div {...getRootProps()} className="border-2 border-dashed w-8/12 border-gray-300 rounded-md p-8 cursor-pointer flex flex-col items-center justify-center">
             <input {...getInputProps()} />
             <CloudUploadOutlined className="text-3xl mb-4 text-gray-400" />
@@ -60,7 +60,7 @@ function FileUploader() {
             <Title level={5} className="mr-2">View Mode:</Title>
             <Switch checkedChildren="Table" unCheckedChildren="JSON" checked={viewMode === 'table'} onChange={handleViewModeChange} />
           </div>
-          <div className="w-full h-full flex justify-center items-center">
+          <div className="w-full h-screen flex justify-center items-center">
             {viewMode === 'table' && parsedData && <VehicleTable data={parsedData} loading={false} />}
             {viewMode === 'json' && parsedData && <JsonDisplay data={parsedData} />}
           </div>
