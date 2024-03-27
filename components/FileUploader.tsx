@@ -35,7 +35,7 @@ function FileUploader() {
     }
   }, [dispatch]);
 
-  const { getRootProps, getInputProps } = useDropzone({ onDrop, accept: '.json', multiple: false });
+  const { getRootProps, getInputProps } = useDropzone({ onDrop,  accept: ['.json'], multiple: false });
 
   const handleViewModeChange = (checked: boolean) => {
     dispatch(setViewMode(checked ? 'table' : 'json'));
