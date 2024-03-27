@@ -42,7 +42,7 @@ const JsonDisplay: React.FC<JsonDisplayProps> = ({ data }) => {
   const paginatedData = filteredData.slice(startIdx, endIdx);
 
   return (
-    <Card elevation={3}>
+    <Card>
       <Typography.Title level={5} style={{ marginBottom: '1rem' }}>
         Search Results (JSON Format)
       </Typography.Title>
