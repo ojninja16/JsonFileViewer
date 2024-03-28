@@ -61,16 +61,15 @@ function Search({ parameterNames, jsonData, viewMode }: SearchProps) {
   };
 
   return (
-    <>
-      <div>
-        <Title level={5} style={{ marginBottom: '1rem' }}>
-          🔍 Multi-Parameter Search
-        </Title>
-        <Row gutter={[16, 16]}> {/* Use Row component with gutter prop for spacing */}
+    <div className="flex flex-col items-center ">
+      <Title level={5} className="mb-4">
+        🔍 Multi-Parameter Search
+      </Title>
+      <div className="w-full max-w-md ">
+        <Row gutter={[16, 16]}>
           {searchParams.map((param) => (
-            <Col xs={24} key={param.id}> {/* Use Col component with xs={24} for full width on small screens */}
+            <Col span={24} key={param.id}>
               <SearchParameter
-                key={param.id}
                 param={param}
                 onRemove={handleRemoveParameter}
                 onInputChange={handleInputChange}
@@ -78,26 +77,23 @@ function Search({ parameterNames, jsonData, viewMode }: SearchProps) {
               />
             </Col>
           ))}
-          <Col xs={24}> {/* Use Col component with xs={24} for full width on small screens */}
-            <Button
-              type="default"
-              icon={<PlusOutlined />}
-              onClick={handleAddParameter}
-              style={{ marginBottom: '0.5rem' }}
-            >
+          <Col span={24}>
+            <Button type="default" icon={<PlusOutlined />} onClick={handleAddParameter}>
               Add Parameter
             </Button>
           </Col>
-          <Col xs={24}> {/* Use Col component with xs={24} for full width on small screens */}
-            <Button type="primary" icon={<SearchOutlined />} onClick={handleSearch}>
+          <Col span={24}>
+            <Button type="primary" icon={<SearchOutlined />} onClick={handleSearch} className="mt-4">
               Search
             </Button>
           </Col>
         </Row>
       </div>
+      <div className='h-screen w-screen px-4'>
       {viewMode === 'json' && filteredData.length > 0 && <JsonDisplay data={filteredData} />}
       {viewMode === 'table' && <VehicleTable data={filteredData} loading={isLoading} />}
-    </>
+      </div>
+    </div>
   );
 }
 

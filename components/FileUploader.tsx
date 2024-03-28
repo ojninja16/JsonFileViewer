@@ -8,6 +8,7 @@ import { RootState } from '../redux/store';
 import { Vehicle } from '../types/Vehicle';
 import VehicleTable from './VehicleTable';
 import JsonDisplay from './JsonDisplay';
+import Search from './Search'; // Import the Search component
 
 const { Title } = Typography;
 
@@ -60,9 +61,8 @@ function FileUploader() {
             <Title level={5} className="mr-2">View Mode:</Title>
             <Switch checkedChildren="Table" unCheckedChildren="JSON" checked={viewMode === 'table'} onChange={handleViewModeChange} />
           </div>
-          <div className="w-full h-screen flex justify-center items-center">
-            {viewMode === 'table' && parsedData && <VehicleTable data={parsedData} loading={false} />}
-            {viewMode === 'json' && parsedData && <JsonDisplay data={parsedData} />}
+          <div className='h-full w-full'>
+          <Search parameterNames={parsedData ? Object.keys(parsedData[0]) : []} jsonData={parsedData} viewMode={viewMode} />
           </div>
         </div>
       </Card>

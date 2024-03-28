@@ -8,44 +8,15 @@ interface VehicleTableProps {
 }
 
 const VehicleTable: React.FC<VehicleTableProps> = ({ data, loading }) => {
-  console.log(data);
-  const columns = [
-    {
-      title: 'Name',
-      dataIndex: 'Name', // Capitalized as per your data structure
-      key: 'name', // Typically, the key is lowercase
-    },
-    {
-      title: 'Model',
-      dataIndex: 'Model',
-      key: 'model',
-    },
-    {
-      title: 'Type',
-      dataIndex: 'Type',
-      key: 'type',
-    },
-    {
-      title: 'Manufacturer',
-      dataIndex: 'Manufacturer',
-      key: 'manufacturer',
-    },
-    {
-      title: 'Manufacturing Date',
-      dataIndex: 'Manufacturing Date', // May need adjustment if this key contains spaces
-      key: 'manufacturingDate',
-    },
-    {
-      title: 'Seating',
-      dataIndex: 'Seating',
-      key: 'seating',
-    },
-  ];
-  
+  const columns = data.length > 0 ? Object.keys(data[0]).map((key) => ({
+    title: key,
+    dataIndex: key,
+    key: key.toLowerCase().replace(/\s+/g, '_'),
+  })) : [];
 
   return (
-    <div style={{ overflowX: 'auto' }}>
-      <Table dataSource={data} columns={columns} loading={loading} scroll={{ x: true }} />
+    <div style={{ overflowX: 'auto' }} className=' max-h-screen'>
+      <Table dataSource={data} columns={columns} loading={loading} scroll={{ x: true }} rowClassName="table-row" />
     </div>
   );
 };

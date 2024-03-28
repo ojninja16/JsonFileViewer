@@ -17,14 +17,14 @@ function SearchParameter({ param, onRemove, onInputChange, parameterNames }: Sea
   };
 
   return (
-    <div style={{ padding: '1rem', marginBottom: '1rem' }}>
-      <Row gutter={[16, 16]} align="middle"> {/* Use Row component with gutter prop for spacing */}
-        <Col xs={24} sm={8}> {/* Use Col component with xs={24} for full width on small screens */}
+    <div className="p-4 mb-2 bg-gray-100 rounded-md">
+      <Row gutter={[16, 16]} align="middle">
+        <Col xs={24} sm={8}>
           <Select
-            style={{ width: '100%' }}
             placeholder="Parameter Name"
             value={param.name}
             onChange={(value) => handleInputChange('name', value)}
+            className="w-full"
           >
             {parameterNames.length === 0 && (
               <Option value="" disabled>
@@ -38,15 +38,15 @@ function SearchParameter({ param, onRemove, onInputChange, parameterNames }: Sea
             ))}
           </Select>
         </Col>
-        <Col xs={24} sm={8}> {/* Use Col component with xs={24} for full width on small screens */}
+        <Col xs={24} sm={8}>
           <Input
-            style={{ width: '100%' }}
             placeholder="Parameter Value"
             value={param.value}
             onChange={(e) => handleInputChange('value', e.target.value)}
+            className="w-full"
           />
         </Col>
-        <Col xs={24} sm={8} style={{ textAlign: 'right' }}> {/* Use Col component with xs={24} for full width on small screens */}
+        <Col xs={24} sm={8} className="flex justify-end">
           <Button type="text" icon={<DeleteOutlined />} onClick={() => onRemove(param.id)} danger />
         </Col>
       </Row>
